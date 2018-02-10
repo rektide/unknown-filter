@@ -1,0 +1,31 @@
+{
+	"name": "unknown-filter",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"module": "unknown-filter.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.voodoowarez.com/unknown-filter"
+	},
+	"keywords": [],
+	"author": "rektide de la faye",
+	"license": "MIT",
+	"module": "unknown-filter.js",
+	"esm": true,
+	"@std/esm": {
+		"esm": "js",
+		"cjs": {
+			"namedExports": true
+		}
+	},
+	"dependencies": {
+		"extensible-function": "^1.1.1"
+	},
+	"devDependencies": {
+		"@std/esm": "^0.21.2"
+	}
+}
