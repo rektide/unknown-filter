@@ -1,7 +1,7 @@
 {
 	"name": "unknown-filter",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Filter that returns only things it has not seen",
 	"main": "index.js",
 	"module": "unknown-filter.js",
 	"scripts": {
