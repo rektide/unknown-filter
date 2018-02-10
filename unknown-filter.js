@@ -16,7 +16,7 @@ export class UnknownFilter extends ExtensibleFunction{
 		  _primitives= [],
 		  _objects= new WeakSet(),
 		  _wasPrimitive // out of band data pass from has back to filter
-		super( this.filter, known)
+		super( UnknownFilter.prototype.filter, known)
 
 		// expose our state as not enumerable properties
 		Object.defineProperties(this, {
