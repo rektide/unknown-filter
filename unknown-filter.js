@@ -6,7 +6,7 @@ import ExtensibleFunction from "extensible-function"
 export class UnknownFilter extends ExtensibleFunction{
 	static isPrimitive( o){
 		var typeOf= typeof o
-		return o=== "string"|| o=== "number"|| o=== "symbol"|| o instanceof Date
+		return typeOf=== "string"|| typeOf=== "number"|| typeOf=== "symbol"|| o instanceof Date
 	}
 	/**
 	* Construct a new filter function, which will return unseen objects and return undefined for seen things.
@@ -27,7 +27,8 @@ export class UnknownFilter extends ExtensibleFunction{
 				value: _objects
 			},
 			_wasPrimitive: {
-				value: _wasPrimitive
+				value: _wasPrimitive,
+				writable: true
 			}
 		})
 
@@ -68,7 +69,7 @@ export class UnknownFilter extends ExtensibleFunction{
 	*/
 	has( o){
 		var typeOf= typeof o
-		if( UnknknownFilter.isPrimitive( o)){
+		if( UnknownFilter.isPrimitive( o)){
 			this._wasPrimitive= true
 			if( this._primitives.indexOf( o)!== -1){
 				return undefined
