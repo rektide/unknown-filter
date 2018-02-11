@@ -1,13 +1,14 @@
-import ExtensibleFunction from "extensible-function"
+import { Bound} from "extensible-function"
 
 /**
 * Construct a new filter function, which will return unseen objects and return undefined for seen things.
 */
-export class UnknownFilter extends ExtensibleFunction{
+export class UnknownFilter extends Bound{
 	static isPrimitive( o){
 		var typeOf= typeof o
 		return typeOf=== "string"|| typeOf=== "number"|| typeOf=== "symbol"|| o instanceof Date
 	}
+
 	/**
 	* Construct a new filter function, which will return unseen objects and return undefined for seen things.
 	*/
@@ -16,7 +17,7 @@ export class UnknownFilter extends ExtensibleFunction{
 		  _primitives= [],
 		  _objects= new WeakSet(),
 		  _wasPrimitive // out of band data pass from has back to filter
-		super( UnknownFilter.prototype.filter, known)
+		super( UnknownFilter.prototype.filter)
 
 		// expose our state as not enumerable properties
 		Object.defineProperties(this, {
@@ -33,13 +34,13 @@ export class UnknownFilter extends ExtensibleFunction{
 		})
 
 		// add all the known things
-		if( known&& typeof known!== "string"&& existing[ Symbol.iterator]){
+		if( known&& typeof known!== "string"&& known[ Symbol.iterator]){
 			try{
 				for( var o of existing){
-					known.add( o)
+					this.filter( o)
 				}
 			}catch(err){
-				known.add( existing)
+				this.filter( existing)
 			}
 		}
 	}
